@@ -1,42 +1,55 @@
 import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard'
+const format = (userName) => `@${userName}`
+const users = [
+    {
+        formatUserName: format,
+        userName: "elsabiojuan",
+        name: "Juan Bermúdez Gómez",
+        isFollowing: true
+    },
+    {
+        formatUserName: format,
+        userName: "juanandresbermudezgomez6176",
+        name: "Juan Bermúdez",
+        isFollowing: false
+    },
+    {
+        formatUserName: format,
+        userName: "LelePons",
+        name: "Lele Pons",
+        isFollowing: false
+    }, 
+    {
+        formatUserName: format,
+        userName: "beckyg",
+        name: "Becky G",
+        isFollowing: false
+    },
+    {
+        formatUserName: format,
+        userName: "NattiNatasha",
+        name: "NATTI NATASHA",
+        isFollowing: true
+    }
+]
 
 export function App (){
-    const format = (userName) => `@${userName}`
+    
     return(
         <section className='App'>
+            {
+                users.map(({formatUserName, userName, name, isFollowing})=>(
 
-            <TwitterFollowCard 
-                formatUserName={format} 
-                userName="elsabiojuan" 
-                name = "Juan Bermúdez"
-                initialIsFollowing = {true}
-            />
-
-            <TwitterFollowCard 
-                formatUserName={format} 
-                userName="juanandresbermudezgomez6176" 
-                name = "Juan Bermúdez"
-            />
-
-            <TwitterFollowCard 
-                formatUserName={format} 
-                userName="LelePons" 
-                name = "Lele Pons"
-            />
-
-            <TwitterFollowCard 
-                formatUserName={format} 
-                userName="pedrocapo_oficial" 
-                name = "Pedro Capó"
-            />
-
-            <TwitterFollowCard 
-                formatUserName={format} 
-                userName="beckyg" 
-                name = "Becky G"
-            />
-
+                    <TwitterFollowCard
+                        key = {userName}
+                        formatUserName = {formatUserName}
+                        userName = {userName}
+                        name = {name}
+                        initialIsFollowing = {isFollowing}
+                    />
+                ))
+            }
         </section>
     )
 }
